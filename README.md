@@ -1,4 +1,4 @@
-# low-resource-rtMRI-ATB-segmentation-ICASSP2025
+# Low-resource-rtMRI-ATB-segmentation-ICASSP2025
 
 ## 🔊 Role of the Pretraining and the Adaptation Data Sizes for Low-Resource rtMRI Video Segmentation
 
@@ -29,22 +29,22 @@ Our findings demonstrate:
 
 The repository contains six major components corresponding to the experiments described in the paper:
 
-1. **`pretraining/`**  
+1. **`pretrain.py/`**  
    Train models using 8 out of 10 subjects from the **USC-TIMIT** dataset.
 
-2. **`tuning/`**  
+2. **`tune.py/`**  
    Fine-tune pretrained models using a small number of frames from the remaining 2 subjects (**F5 and M5**).
 
-3. **`prediction/`**  
+3. **`prediction.py/`**  
    Run inference using the pretrained and fine-tuned models on 3 unseen videos of F5 and M5.
 
-4. **`tuning_for_74/`**  
+4. **`tune_for_74.py/`**  
    Fine-tune pretrained models using a small subset of data from 2 subjects from the **USC 75-SPEAKER** dataset (we refer them as **F6 and M6**).
 
-5. **`prediction_for_74/`**  
+5. **`prediction_for_74.ipynb/`**  
    Run inference on unseen videos of F6 and M6 using the models trained in step 4.
 
-6. **`pretrain_for_74/`**  
+6. **`pretrain_for_74.py/`**  
    Train a "matched condition" model using more labeled data from F6 and M6 to assess the benefit of fine-tuning.
 
 📊 All results are visualized and plotted as shown in the paper.

@@ -1,55 +1,79 @@
 # low-resource-rtMRI-ATB-segmentation-ICASSP2025
- - ICASSP 2025
 
-# 🔊 Project Title Here
+## 🔊 Role of the Pretraining and the Adaptation Data Sizes for Low-Resource rtMRI Video Segmentation
 
 Official implementation of the paper:  
-**"Role of the Pretraining and the Adaptation data sizes for low resource rtMRI video segmentation"**  
-Accepted at **ICASSP 2025**
+**"Role of the Pretraining and the Adaptation Data Sizes for Low-Resource rtMRI Video Segmentation"**  
+Published at **ICASSP 2025**
 
-**Authors:** Your Name, Co-author Name, etc.  
-📄 [Link to Paper](https://link-to-paper)
+**Authors:** Masoud Thajudeen Tholan, Vinayaka Hegde, Chetan Sharma, Prasanta Kumar Ghosh  
+📄 [Link to Paper (IEEE)](https://doi.org/10.1109/ICASSP49660.2025.10889096)
 
 ---
 
 ## 📌 Overview
 
-This repository contains the codebase for our ICASSP 2025 paper:  
-*"Your Paper Title"*.
+This repository contains the official codebase for our ICASSP 2025 paper:  
+*"Role of the Pretraining and the Adaptation Data Sizes for Low-Resource rtMRI Video Segmentation"*.
 
-Our work addresses [brief problem description] by introducing [key novelty or method]. It achieves [state results or use cases] and is applicable to [applications].
+Real-time Magnetic Resonance Imaging (rtMRI) is widely used in speech production studies due to its ability to provide a dynamic view of the vocal tract during articulation. In this work, we investigate the role of pretraining and adaptation data sizes in low-resource settings using the SegNet model for Air-Tissue Boundary (ATB) segmentation.
 
-> Example:  
-> This work proposes a real-time transformer-based model for speech enhancement in noisy environments. It outperforms traditional methods in both quality and efficiency, and is optimized for low-resource devices.
-
----
-
-## 🗂️ Table of Contents
-
-- [Overview](#-overview)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Training](#-training)
-- [Results](#-results)
-- [Dataset](#-dataset)
-- [Citation](#-citation)
-- [License](#-license)
+Our findings demonstrate:
+- The effectiveness of model fine-tuning with limited rtMRI data.
+- Adaptation is possible with as few as **15 labeled frames** from new speakers.
+- Pretraining and adaptation strategies significantly influence segmentation quality.
 
 ---
 
+## 📁 Repository Structure & Code Usage
 
-### 🔖 Citation
+The repository contains six major components corresponding to the experiments described in the paper:
 
-If you find this work useful for your research, please cite our paper:
+1. **`pretraining/`**  
+   Train models using 8 out of 10 subjects from the **USC-TIMIT** dataset.
 
-```bibtex```
+2. **`tuning/`**  
+   Fine-tune pretrained models using a small number of frames from the remaining 2 subjects (**F5 and M5**).
+
+3. **`prediction/`**  
+   Run inference using the pretrained and fine-tuned models on 3 unseen videos of F5 and M5.
+
+4. **`tuning_for_74/`**  
+   Fine-tune pretrained models using a small subset of data from 2 subjects from the **USC 75-SPEAKER** dataset (we refer them as **F6 and M6**).
+
+5. **`prediction_for_74/`**  
+   Run inference on unseen videos of F6 and M6 using the models trained in step 4.
+
+6. **`pretrain_for_74/`**  
+   Train a "matched condition" model using more labeled data from F6 and M6 to assess the benefit of fine-tuning.
+
+📊 All results are visualized and plotted as shown in the paper.
+
+---
+
+## 📦 Main Branch
+
+All source code for the above six components is located in the `main` branch of this repository.
+
+---
+
+## 🔖 Citation
+
+If you find this work useful in your research, please cite our paper:
+
+```bibtex
 @INPROCEEDINGS{10889096,
   author={Tholan, Masoud Thajudeen and Hegde, Vinayaka and Sharma, Chetan and Ghosh, Prasanta Kumar},
   booktitle={ICASSP 2025 - 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
   title={Role of the Pretraining and the Adaptation data sizes for low-resource real-time MRI video segmentation}, 
   year={2025},
-  volume={},
-  number={},
   pages={1-5},
-  doi={10.1109/ICASSP49660.2025.10889096}}
+  doi={10.1109/ICASSP49660.2025.10889096}
+}
+```
+
+## 📄 License
+
+This code is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
 
